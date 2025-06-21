@@ -1,0 +1,159 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+}
+
+.center-form {
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.page-title {
+  text-align: center;
+  color: #fbf5fc;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.loader,
+.no-rooms {
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+  margin: 20px 0;
+}
+
+.room-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 60vh;
+}
+
+.room-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.room-card .card {
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.room-card .card:hover {
+  transform: scale(1.03);
+}
+
+.avatar {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.book-btn {
+  margin-top: 12px;
+  background-color: #52c41a;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.book-btn:hover {
+  background-color: #3fa513;
+}
+
+.page {
+  color: #fbf5fc;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: none;
+  background-color: #6a0572;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  width: 300px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-box label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.modal-box input[type="date"] {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-actions button:first-child {
+  background-color: #52c41a;
+  color: white;
+}
+
+.modal-actions button:last-child {
+  background-color: #ccc;
+  color: black;
+}

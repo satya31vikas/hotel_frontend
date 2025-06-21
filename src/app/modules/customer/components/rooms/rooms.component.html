@@ -1,0 +1,62 @@
+<!-- rooms.component.html -->
+<div class="center-form">
+  <h1 class="page-title">Available Rooms</h1>
+
+  <div *ngIf="loading" class="loader">Loading...</div>
+  <div *ngIf="!loading && rooms.length === 0" class="no-rooms">No rooms available.</div>
+
+  <div class="room-wrapper" *ngIf="rooms.length > 0">
+    <div class="room-container">
+      <div class="room-card" *ngFor="let room of rooms">
+        <div class="card">
+          <img class="avatar" src="assets/roomimage.jpeg" alt="Room" />
+          <h3>{{ room.name }}</h3>
+          <p>Type: {{ room.type }}</p>
+          <p>Price: ₹{{ room.price }}</p>
+          <button class="book-btn" (click)="showModal(room.id)">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="total > 10">
+    <button (click)="pageIndexChange(currentpage - 1)" [disabled]="currentpage === 1">Prev</button>
+    <span class="page">Page {{ currentpage }}</span>
+    <button (click)="pageIndexChange(currentpage + 1)" [disabled]="currentpage >= Math.ceil(total/10)">Next</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="isVisible">
+    <div class="modal-box">
+      <h2>Book Room</h2>
+
+
+      <!-- Check-in Date -->
+<label>Check-in Date</label>
+<input
+  type="date"
+  [min]="todayString"
+  [(ngModel)]="checkInDate"
+  (ngModelChange)="onCheckInChange($event)"
+/>
+
+<!-- Check-out Date -->
+<label>Check-out Date</label>
+<input
+  type="date"
+  [min]="getNextDate(checkInDate)"
+  [(ngModel)]="checkOutDate"
+  (ngModelChange)="onCheckOutChange($event)"
+/>
+
+
+
+
+      <div class="modal-actions">
+        <button (click)="handleOk()">Submit</button>
+        <button (click)="handleCancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

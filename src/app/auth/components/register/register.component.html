@@ -1,0 +1,67 @@
+<div class="center-form signup-page">
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+  </div>
+
+  <h2>Enter Details to Register</h2>
+
+  <!-- Registration Form -->
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="custom-form">
+
+    <!-- Name Field -->
+    <div class="form-group">
+      <input type="text" formControlName="name" placeholder="Enter name" />
+      <div class="error" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+        Please enter your name
+      </div>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <input type="email" formControlName="email" placeholder="Enter email" />
+      <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        Please enter a valid email
+      </div>
+    </div>
+
+    <!-- Mobile Field -->
+    <div class="form-group">
+      <select formControlName="countryCode">
+        <option value="+91">+91</option>
+        <option value="+1">+1</option>
+        <option value="+44">+44</option>
+      </select>
+      <input type="text" formControlName="mobile" placeholder="Enter mobile number" />
+      <div class="error" *ngIf="registerForm.get('mobile')?.invalid && registerForm.get('mobile')?.touched">
+        Please enter valid 10-digit mobile number (starts with 6-9)
+      </div>
+    </div>
+
+    <!-- Address Field -->
+    <div class="form-group">
+      <input type="text" formControlName="address" placeholder="Enter address" />
+    </div>
+
+    <!-- Password Field -->
+    <div class="form-group">
+      <input type="password" formControlName="password" placeholder="Enter password" />
+      <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        Password must be 8+ chars with 1 uppercase, 1 lowercase, 1 digit, 1 special char
+      </div>
+    </div>
+
+    <!-- Confirm Password Field -->
+    <div class="form-group">
+      <input type="password" formControlName="confirmPassword" placeholder="Confirm password" />
+      <div class="error" *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+        Passwords must match
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button class="submit-btn" type="submit" [disabled]="registerForm.invalid">
+      Register
+    </button>
+  </form>
+</div>

@@ -1,0 +1,54 @@
+<!-- reservations.component.html -->
+<div class="center-form">
+  <h1 class="page-title">Reservations</h1>
+
+  <div class="table-container">
+    <table class="reservation-table">
+      <thead>
+        <tr>
+          <th>Room Name</th>
+          <th>Room Type</th>
+          <th>Check In</th>
+          <th>Check Out</th>
+          <th>Price</th>
+          <th>Username</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of reservations">
+          <td>{{ reservation.roomName }}</td>
+          <td>{{ reservation.roomType }}</td>
+          <td>{{ reservation.checkInDate }}</td>
+          <td>{{ reservation.checkOutDate }}</td>
+          <td>₹{{ reservation.price }}</td>
+          <td>{{ reservation.username }}</td>
+          <td>
+            <span [ngClass]="{
+              'tag-pending': reservation.reservationStatus === 'PENDING',
+              'tag-approved': reservation.reservationStatus === 'APPROVED',
+              'tag-rejected': reservation.reservationStatus === 'REJECTED'
+            }">
+              {{ reservation.reservationStatus }}
+            </span>
+          </td>
+          <td *ngIf="reservation.reservationStatus === 'PENDING'">
+            <button class="approve-btn" (click)="changeReservationStatus(reservation.id, 'Approve')">✔️</button>
+            <button class="reject-btn" (click)="changeReservationStatus(reservation.id, 'REJECT')">❌</button>
+          </td>
+        </tr>
+
+        <tr *ngIf="reservations.length === 0">
+          <td colspan="8" class="empty-row">No reservations found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <button [disabled]="currentPage === 1" (click)="pageIndexChange(currentPage - 1)">Previous</button>
+    <span>Page {{ currentPage }}</span>
+    <button [disabled]="reservations.length < 4" (click)="pageIndexChange(currentPage + 1)">Next</button>
+  </div>
+</div>

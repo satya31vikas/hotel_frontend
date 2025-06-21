@@ -1,0 +1,46 @@
+<!-- dashboard.component.html -->
+<div class="center-form">
+  <button class="post-room-btn" routerLink="/admin/room">Post Room</button>
+</div>
+
+<!-- Loader while fetching rooms -->
+<div *ngIf="loading" class="loader"></div>
+
+<!-- No Rooms Message -->
+<div *ngIf="!loading && rooms.length === 0" class="no-rooms">
+  <p>No rooms available. Please add a new room.</p>
+</div>
+
+<!-- Room Cards -->
+<div class="room-container" *ngIf="rooms.length > 0">
+  <div class="room-card" *ngFor="let room of rooms">
+    <div class="card">
+      <div class="card-avatar">
+        <img src="assets/roomimage.jpeg" alt="Room Avatar">
+      </div>
+      <div class="card-body">
+        <h3>{{ room.name }}</h3>
+        <p>Type: {{ room.type }}</p>
+        <p>Price: ₹{{ room.price }}</p>
+      </div>
+      <div class="card-actions">
+        <span class="icon edit" (click)="navigateToEdit(room.id)">&#9998;</span>
+        <span class="icon delete" (click)="showConfirm(room.id)">&#10060;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="total > 10">
+  <button (click)="pageIndexChange(currentpage - 1)" [disabled]="currentpage === 1" class="prev-btn">
+    Previous
+  </button>
+
+  <span>Page {{ currentpage }}</span>
+
+  <button (click)="pageIndexChange(currentpage + 1)" [disabled]="currentpage * 10 >= total" class="next-btn">
+    Next
+  </button>
+</div>
+
+</div>

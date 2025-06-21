@@ -1,0 +1,39 @@
+<!-- Top Navigation Bar -->
+<nav class="navbar">
+  <div class="navbar-left">
+    <span class="logo-text">DreamStay</span>
+  </div>
+
+  <div class="navbar-right">
+    <!-- Guest View -->
+    <ng-container *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
+      <a routerLink="/register">Register</a>
+      <a routerLink="/">Login</a>
+    </ng-container>
+
+    <!-- Admin View -->
+    <ng-container *ngIf="isAdminLoggedIn">
+      <a routerLink="/admin/room">Post Room</a>
+      <a routerLink="/admin/dashboard">Rooms</a>
+      <a routerLink="/admin/reservations">Reservations</a>
+      <a (click)="logout()">Logout</a>
+    </ng-container>
+
+    <!-- Customer View -->
+    <ng-container *ngIf="isCustomerLoggedIn">
+      <a routerLink="/customer/rooms">Rooms</a>
+      <a routerLink="/customer/bookings">Bookings</a>
+      <a (click)="logout()">Logout</a>
+    </ng-container>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 Hotel Management System</p>
+</footer>
