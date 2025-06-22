@@ -22,13 +22,19 @@ import { DemoNgZorroAntdModule } from '../../DemoNgZorroAntdModule';
 import { AdminRoutingModule } from '../admin/admin-routing.module';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { ViewBookingsComponent } from './components/view-bookings/view-bookings.component';
+import { PayBillComponent } from './components/pay-bill/pay-bill.component';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
+import { CustomerSupportComponent } from './components/customer-support/customer-support.component';
 
 
 @NgModule({
   declarations: [
     CustomerComponent,
     RoomsComponent,
-    ViewBookingsComponent
+    ViewBookingsComponent,
+    PayBillComponent,
+    CardDetailsComponent,
+    CustomerSupportComponent
   ],
   imports: [
     CommonModule,

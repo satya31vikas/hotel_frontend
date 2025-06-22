@@ -25,6 +25,17 @@
             <span class="tag pending" *ngIf="booking.reservationStatus === 'PENDING'">Pending</span>
             <span class="tag approved" *ngIf="booking.reservationStatus === 'APPROVED'">Approved</span>
             <span class="tag rejected" *ngIf="booking.reservationStatus === 'REJECTED'">Rejected</span>
+
+            <div *ngIf="booking.reservationStatus === 'APPROVED' && !booking.paid">
+              <button
+                class="pay-btn"
+                [routerLink]="['/customer/pay-bill', booking.id]"
+                [queryParams]="{ amount: booking.price }"
+              >
+                Pay Bill
+              </button>
+            </div>
+            <span *ngIf="booking.paid" class="tag-paid">✅ Paid</span>
           </td>
         </tr>
       </tbody>

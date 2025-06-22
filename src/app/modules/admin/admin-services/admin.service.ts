@@ -59,6 +59,15 @@ export class AdminService {
     });
   }
 
+  getAllFeedbacks(): Observable<any[]> {
+  return this.http.get<any[]>(`${BASIC_URL}api/admin/feedbacks`, {
+    headers: this.createAuthorizationHeader()
+  });
+}
+
+
+
+
   createAuthorizationHeader(){
 
     let authHeaders: HttpHeaders = new HttpHeaders();

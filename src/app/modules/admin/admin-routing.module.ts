@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PostRoomComponent } from './components/post-room/post-room.component';
 import { UpdateRoomComponent } from './components/update-room/update-room.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
+import { AdminFeedbackComponent } from './components/admin-feedback/admin-feedback.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path: 'room', component: PostRoomComponent},
   { path: 'room/:id/edit', component: UpdateRoomComponent},
   { path: 'reservations', component: ReservationsComponent },
-
+  { path: 'feedbacks', component: AdminFeedbackComponent },
 ];
 
 

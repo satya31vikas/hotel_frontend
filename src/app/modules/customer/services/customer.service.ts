@@ -33,6 +33,24 @@ export class CustomerService {
         headers: this.createAuthorizationHeader(),
       });
     }
+
+    payForReservation(reservationId: number): Observable<any> {
+      return this.http.put(
+        `${BASIC_URL}api/customer/payment/${reservationId}`,
+        null,
+        {
+          headers: this.createAuthorizationHeader()
+        }
+      );
+    }
+
+    submitFeedback(feedback: any) {
+      return this.http.post(`${BASIC_URL}api/customer/support-feedback`, feedback, {
+        headers: this.createAuthorizationHeader()
+      });
+    }
+
+
     
     createAuthorizationHeader(){
       let authHeaders: HttpHeaders = new HttpHeaders(); 

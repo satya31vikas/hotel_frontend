@@ -1,0 +1,29 @@
+<div class="pay-bill-container">
+  <h2>Pay Your Bill</h2>
+
+  <div class="amount-section">
+    <p>Total Amount: <strong>₹{{ amount }}</strong></p>
+  </div>
+
+  <div class="card-selection">
+    <label>Select Card Type:</label>
+    <div class="card-options">
+      <button 
+        [class.selected]="selectedCard === 'debit'" 
+        (click)="selectCard('debit')">Debit Card</button>
+      <button 
+        [class.selected]="selectedCard === 'credit'" 
+        (click)="selectCard('credit')">Credit Card</button>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button 
+      class="proceed-btn" 
+      [disabled]="!selectedCard"
+      (click)="proceedToCardDetails()"
+    >
+      Continue to Payment
+    </button>
+  </div>
+</div>

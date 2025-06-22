@@ -63,6 +63,27 @@
   color: white;
 }
 
+.pay-btn {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background-color: #ff9900;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tag-paid {
+  display: inline-block;
+  background-color: #2196f3;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+
 .pagination {
   display: flex;
   justify-content: center;

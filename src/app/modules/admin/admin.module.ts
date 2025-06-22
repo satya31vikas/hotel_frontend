@@ -22,6 +22,7 @@ import { DemoNgZorroAntdModule } from '../../DemoNgZorroAntdModule';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { UpdateRoomComponent } from './components/update-room/update-room.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
+import { AdminFeedbackComponent } from './components/admin-feedback/admin-feedback.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ReservationsComponent } from './components/reservations/reservations.co
     DashboardComponent,
     PostRoomComponent,
     UpdateRoomComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    AdminFeedbackComponent
   ],
   imports: [
     CommonModule,

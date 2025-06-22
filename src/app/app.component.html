@@ -16,6 +16,7 @@
       <a routerLink="/admin/room">Post Room</a>
       <a routerLink="/admin/dashboard">Rooms</a>
       <a routerLink="/admin/reservations">Reservations</a>
+      <a routerLink="/admin/feedbacks" class="nav-link">Customer Feedbacks</a>
       <a (click)="logout()">Logout</a>
     </ng-container>
 
@@ -23,6 +24,7 @@
     <ng-container *ngIf="isCustomerLoggedIn">
       <a routerLink="/customer/rooms">Rooms</a>
       <a routerLink="/customer/bookings">Bookings</a>
+      <a routerLink="/customer/support">Customer Support</a>
       <a (click)="logout()">Logout</a>
     </ng-container>
   </div>

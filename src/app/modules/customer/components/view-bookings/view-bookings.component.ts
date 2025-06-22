@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-view-bookings',

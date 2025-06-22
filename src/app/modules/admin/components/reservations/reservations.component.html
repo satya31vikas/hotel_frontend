@@ -28,7 +28,8 @@
             <span [ngClass]="{
               'tag-pending': reservation.reservationStatus === 'PENDING',
               'tag-approved': reservation.reservationStatus === 'APPROVED',
-              'tag-rejected': reservation.reservationStatus === 'REJECTED'
+              'tag-rejected': reservation.reservationStatus === 'REJECTED',
+              'tag-paid': reservation.reservationStatus === 'PAID'
             }">
               {{ reservation.reservationStatus }}
             </span>
