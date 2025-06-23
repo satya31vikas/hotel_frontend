@@ -52,9 +52,22 @@ export class CardDetailsComponent {
       this.isCardValid() &&
       this.cardHolder.trim().length > 0 &&
       !!this.expiry &&
+      this.isExpiryValid() &&
       /^\d{3}$/.test(this.cvv)
     );
   }
+
+  isExpiryValid(): boolean {
+  if (!this.expiry) return false;
+
+  const [year, month] = this.expiry.split('-').map(Number); // yyyy-mm
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth() + 1; // JavaScript month is 0-based
+
+  return year > currentYear || (year === currentYear && month >= currentMonth);
+}
+
 
   submitPayment() {
     if (!confirm('Are you sure you want to proceed with the payment?')) return;

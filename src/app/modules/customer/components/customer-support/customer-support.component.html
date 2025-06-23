@@ -4,19 +4,64 @@
   <p><strong>Email:</strong> support&#64;dreamstay.com</p>
   <p><strong>Helpline:</strong> +91 9876543210</p>
 
-  <form (ngSubmit)="submitFeedback()" #feedbackForm="ngForm">
+  <form #feedbackForm="ngForm" (ngSubmit)="submitFeedback()" novalidate>
+
+    <!-- Name -->
     <label for="name">Your Name:</label>
-    <input type="text" id="name" [(ngModel)]="customerName" name="customerName" required />
+    <input
+      type="text"
+      id="name"
+      name="customerName"
+      [(ngModel)]="customerName"
+      required
+      pattern="^[a-zA-Z ]+$"
+      #name="ngModel"
+    />
+    <div class="error" *ngIf="name.invalid && name.touched">
+      Name should only contain letters and spaces.
+    </div>
 
+    <!-- Email -->
     <label for="email">Your Email:</label>
-    <input type="email" id="email" [(ngModel)]="email" name="email" required />
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="email"
+      required
+      email
+      #emailField="ngModel"
+    />
+    <div class="error" *ngIf="emailField.invalid && emailField.touched">
+      Enter a valid email address.
+    </div>
 
-    <label for="rating">Rating (1-5):</label>
-    <input type="number" id="rating" [(ngModel)]="rating" name="rating" min="1" max="5" required />
+    <!-- Star Rating -->
+    <label for="rating">Rating:</label>
+    <div class="star-rating">
+      <ng-container *ngFor="let star of [1,2,3,4,5]">
+        <span
+          class="star"
+          [class.filled]="star <= rating"
+          (click)="setRating(star)"
+        >&#9733;</span>
+      </ng-container>
+    </div>
 
+    <!-- Feedback -->
     <label for="feedback">Your Feedback:</label>
-    <textarea id="feedback" [(ngModel)]="feedbackText" name="feedbackText" required></textarea>
+    <textarea
+      id="feedback"
+      name="feedbackText"
+      [(ngModel)]="feedbackText"
+      required
+      #feedback="ngModel"
+    ></textarea>
+    <div class="error" *ngIf="feedback.invalid && feedback.touched">
+      Feedback is required.
+    </div>
 
-    <button type="submit">Submit</button>
+    <!-- Submit -->
+    <button type="submit" [disabled]="feedbackForm.invalid">Submit</button>
   </form>
 </div>

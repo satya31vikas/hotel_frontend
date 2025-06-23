@@ -23,9 +23,18 @@
     </div>
 
     <div class="form-group">
-      <label>Expiry Date</label>
-      <input type="month" [(ngModel)]="expiry" name="expiry" required />
-    </div>
+        <label>Expiry Date</label>
+        <input
+            type="month"
+            [(ngModel)]="expiry"
+            name="expiry"
+            required
+        />
+        <div class="error" *ngIf="expiry && !isExpiryValid()">
+            Expiry date must be current or in the future.
+        </div>
+        </div>
+
 
     <div class="form-group">
       <label>CVV</label>

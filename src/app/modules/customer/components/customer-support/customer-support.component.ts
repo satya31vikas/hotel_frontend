@@ -9,19 +9,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./customer-support.component.scss']
 })
 export class CustomerSupportComponent {
-  customerName: string = '';
-  email: string = '';
-  rating: number = 5;
-  feedbackText: string = '';
+  customerName = '';
+  email = '';
+  rating = 5;
+  feedbackText = '';
 
   constructor(private customerService: CustomerService, private router: Router) {}
+
+  setRating(value: number) {
+    this.rating = value;
+  }
 
   submitFeedback() {
     const feedbackDto = {
       customerName: this.customerName,
       email: this.email,
       rating: this.rating,
-      message: this.feedbackText // make sure your DTO expects "message"
+      message: this.feedbackText
     };
 
     this.customerService.submitFeedback(feedbackDto).subscribe({
@@ -32,5 +36,4 @@ export class CustomerSupportComponent {
       error: () => alert('Error submitting feedback.')
     });
   }
-
 }
